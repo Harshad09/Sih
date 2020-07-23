@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BaseActivity"
+    android:background="@drawable/bg">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#25CCF7"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_scrollFlags="scroll|enterAlways|snap"
+        app:title=" ">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/account"></ImageView>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="25dp"
+            android:textColor="#FFFFFF"
+            android:text="Hi, Sagar"
+            android:textSize="28sp"
+            app:fontFamily="serif"></TextView>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="140dp"
+            app:srcCompat="@drawable/noti"></ImageView>
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="58dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2"
+                android:background="@drawable/rectangle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:weightSum="2">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/rectangle"
+                        android:src="@drawable/tempraturec"
+                        android:scaleType="fitXY"
+                        android:layout_margin="20dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/rectangle"
+                        android:src="@drawable/soil"
+                        android:scaleType="fitXY"
+                        android:layout_margin="20dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1"
+                    android:weightSum="2">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/rectangle"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/soilmo"
+                        android:scaleType="fitXY"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/rectangle"
+                        android:layout_margin="20dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/water"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/carouselView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"
+                app:fillColor="#FFFFFFFF"
+                app:pageColor="#00000000"
+                app:radius="6dp"
+                app:slideInterval="3000"
+                app:strokeColor="#FF777777"
+                android:background="@drawable/rectangle"
+                app:strokeWidth="1dp"/>
+
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="212dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/rectangle"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <ImageView
+                        android:id="@+id/openforum"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/rectangle"
+                        android:src="@drawable/forumnew"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/rectangle"
+                        android:src="@drawable/irrig"
+                        android:id="@+id/irrigation"/>
+
+                    <ImageView
+                        android:id="@+id/chatbot"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/rectangle"
+                        android:src="@drawable/chatbota" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <ImageView
+                        android:id="@+id/kalyan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/rectangle"
+                        android:src="@drawable/kalyan" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/rectangle"
+                        android:src="@drawable/disease" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:scaleType="fitXY"
+                        android:background="@drawable/rectangle"
+                        android:src="@drawable/ecoomerce"/>
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>
