@@ -120,7 +120,7 @@ public class AddAnswer extends AppCompatActivity {
                                         String queid = doc.getId();
                                         questionId.add(queid);
 
-                                        String user = doc.getReference().getParent().getParent().getId().toString();
+                                        String user = doc.getReference().getParent().getParent().getId();
                                         userId.add(user);
                                 }
                                 mDataAdapter.notifyDataSetChanged();

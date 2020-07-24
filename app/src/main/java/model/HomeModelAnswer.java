@@ -1,12 +1,23 @@
 package model;
 
+import java.util.List;
+
 public class HomeModelAnswer {
 
     private String answer;
     private String questionid;
     private String userid;
-    private int upvotes;
+    private long upvotes;
     private String imageurl;
+    private List<String> upvoters;
+
+    public List<String> getUpvoters() {
+        return upvoters;
+    }
+
+    public void setUpvoters(List<String> upvoters) {
+        this.upvoters = upvoters;
+    }
 
     public String getAnswer() {
         return answer;
@@ -32,11 +43,11 @@ public class HomeModelAnswer {
         this.userid = userid;
     }
 
-    public int getUpvotes() {
+    public long getUpvotes() {
         return upvotes;
     }
 
-    public void setUpvotes(int upvotes) {
+    public void setUpvotes(long upvotes) {
         this.upvotes = upvotes;
     }
 

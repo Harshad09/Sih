@@ -114,7 +114,7 @@ public class Add_pert_answer extends AppCompatActivity {
         targtUserId = getIntent().getStringExtra("userId");
         Question.setText(question);
 
-        currentUserId = "user3";
+        currentUserId = "8ZXeHfadswSGHqIcPkZZ";
 
         ChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,12 +139,9 @@ public class Add_pert_answer extends AppCompatActivity {
 
                 answer = Answer.getText().toString();
 
-
-
                 //Inserting Value in database
 
                 currentanswerId = db.collection("Users").document(currentUserId).collection("answer").document().getId();
-
 
 
                 if (filePath != null) {

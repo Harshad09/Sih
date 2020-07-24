@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -47,17 +48,21 @@ import model.QuestionFeed;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static String currentUser = "8ZXeHfadswSGHqIcPkZZ";
+
     private Toolbar toolbar;
     private RecyclerView feedRecyclerView;
     private RecyclerView.Adapter mDataAdapter;
     private ProgressBar progressBar;
 
 
-      public String name;
+      public String name,questionid;
       public HomeModel homeModel = new HomeModel();
       public List<HomeModel> entity = new ArrayList<>();
       public HomeModelAnswer homeModelAnswer = new HomeModelAnswer();
       public List<HomeModelAnswer> topVoteAns = new ArrayList<>();
+      public List<String> answerId = new ArrayList<>();
+      public List<String > userid = new ArrayList<>();
 
     //List to store all question that match perticular requirements
     List<QuestionFeed> questionList ;
@@ -96,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         feedRecyclerView.setLayoutManager(layoutManager);
-        mDataAdapter = new HomeAdapter(this,entity);
+        mDataAdapter = new HomeAdapter(this,entity,topVoteAns,answerId,userid);
         feedRecyclerView.setAdapter(mDataAdapter);
 
         progressBar =  findViewById(R.id.progressBarMain);
@@ -109,40 +114,28 @@ public class MainActivity extends AppCompatActivity {
 
                 //Fetching all documents(question) where question tag == explore tag
                 db.collectionGroup("question")
-                        .whereArrayContainsAny("Tags",Arrays.asList(tags.get(0), tags.get(1), tags.get(2)))
+                        .whereArrayContainsAny("tags",Arrays.asList(tags.get(0), tags.get(1), tags.get(2)))
                         .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.INVISIBLE);
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                if(document.getBoolean("IsAnswered")==true){
+                                if(document.getBoolean("isanswered")==true){
 
 
                                     homeModel = document.toObject(HomeModel.class);
                                     Log.d("ting",document.getData().toString());
                                     entity.add(homeModel);
 
-//                                    String questionid = document.getId();
-//
-//                                    db.collectionGroup("answer").whereEqualTo("queId",questionid).orderBy("upvotes", Query.Direction.DESCENDING).limit(1)
-//                                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
-//                                                @Override
-//                                                public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-//                                                    if (e != null) {
-//                                                        Log.w("error", "Listen failed.", e);
-//                                                        return;
-//                                                    }
-//                                                    topVoteAns.clear();
-//                                                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-//                                                        if (doc.get("answer") != null) {
-//                                                            homeModelAnswer = doc.toObject(HomeModelAnswer.class);
-//                                                            topVoteAns.add(homeModelAnswer);
-//                                                            Log.d("jj",doc.toString());
-//                                                        }
-//                                                    }
-//                                                }
-//                                            });
+                                    String questionid = document.getId();
+                                    Log.d("id",questionid);
+
+                                    SharedPreferences preferences=getSharedPreferences("home",MODE_PRIVATE);
+                                    SharedPreferences.Editor editor=preferences.edit();
+                                    editor.putString("questionid",questionid);
+                                    editor.commit();
+
 
 
 //                                      HomeModel homeModel = document.toObject(HomeModel.class);
@@ -176,6 +169,55 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        SharedPreferences preferences=getSharedPreferences("home",MODE_PRIVATE);
+        String n = preferences.getString("questionid","defaultValue");
+        db.collectionGroup("answer").whereEqualTo("questionid",n).orderBy("upvotes", Query.Direction.DESCENDING).limit(1)
+            .addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w("errorL", "Listen failed.", e);
+                    return;
+                }
+                topVoteAns.clear();
+                answerId.clear();
+                userid.clear();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc.exists()) {
+                        homeModelAnswer = doc.toObject(HomeModelAnswer.class);
+                        Log.d("ans",doc.getData().toString());
+                        topVoteAns.add(homeModelAnswer);
+                        answerId.add(doc.getId());
+
+                        String userId = doc.getReference().getParent().getParent().getId();
+                        userid.add(userId);
+                    }
+                }
+                mDataAdapter.notifyDataSetChanged();
+            }
+        });
+
+//
+//
+//                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                if (task.isSuccessful()){
+//
+//                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                        homeModelAnswer = document.toObject(HomeModelAnswer.class);
+//                        Log.d("ans",document.getData().toString());
+//                        topVoteAns.add(homeModelAnswer);
+//                    }
+//                    mDataAdapter.notifyDataSetChanged();
+//
+//                }
+//                else
+//                {      Log.d("ans",task.getException().toString());
+//                }
+//            }
+//        });
 
         //Cloud function code
 
@@ -315,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
     public void readTags(final MyCallback myCallback){
 
         //***HomeAdapter List data fecthing***//
-        DocumentReference user = db.collection("Users").document("user3");
+        DocumentReference user = db.collection("Users").document(currentUser);
         user.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
