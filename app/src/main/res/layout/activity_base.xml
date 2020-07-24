@@ -183,8 +183,12 @@
                         android:layout_weight="1"
                         android:scaleType="fitXY"
                         android:background="@drawable/rectangle"
+<<<<<<< HEAD
                         android:src="@drawable/irrig"
                         android:id="@+id/irrigation"/>
+=======
+                        android:src="@drawable/irrig" />
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
                     <ImageView
                         android:id="@+id/chatbot"
@@ -223,7 +227,10 @@
                         android:src="@drawable/kalyan" />
 
                     <ImageView
+<<<<<<< HEAD
                         android:id="@+id/diseaseDetection"
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"

@@ -1,5 +1,6 @@
 package adapter;
 
+<<<<<<< HEAD
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,10 +10,14 @@ import android.graphics.PorterDuffColorFilter;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
+=======
+import android.content.Context;
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,17 +34,29 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
+=======
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.discussit.R;
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
 import java.util.List;
 
 import model.HomeModel;
+<<<<<<< HEAD
 import model.HomeModelAnswer;
 
 import static com.example.discussit.MainActivity.currentUser;
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder>
 {
+<<<<<<< HEAD
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     FirebaseStorage storage = FirebaseStorage.getInstance();//getting instance of the firebase storage
@@ -57,6 +74,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         this.topVoteAns = topVoteAns;
         this.answerId = answerId;
         this.userid = userid;
+=======
+    private Context mcontext;
+    private List<HomeModel> entity;
+
+    public HomeAdapter(Context mcontext, List<HomeModel> entity) {
+        this.mcontext = mcontext;
+        this.entity = entity;
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
     }
 
 
@@ -69,6 +94,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     }
 
     @Override
+<<<<<<< HEAD
     public void onBindViewHolder(@NonNull final HomeViewHolder holder, int position) {
         HomeModel homeModel =  entity.get(position);
         final HomeModelAnswer homeModelAnswer = topVoteAns.get(position);
@@ -89,10 +115,21 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             holder.upvoteBtn.setBackgroundTintList(ContextCompat.getColorStateList(mcontext, R.color.unlike));
 
         }
+=======
+    public void onBindViewHolder(@NonNull HomeViewHolder holder, int position) {
+
+        HomeModel homeModel =  entity.get(position);
+        holder.username.setText(homeModel.getName());
+        holder.city.setText(homeModel.getCity());
+        holder.question.setText(homeModel.getQuestion());
+        holder.answer.setText(homeModel.getAnswer());
+        holder.upvotes.setText(homeModel.getUpvotes()+"");
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
         holder.upvoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 if (homeModelAnswer.getUpvoters().contains(currentUser)){
                     holder.upvoteBtn.setBackgroundTintList(ContextCompat.getColorStateList(mcontext,R.color.unlike));
                     db.collection("Users").document(user).collection("answer")
@@ -109,6 +146,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                             .document(answerid).update("upvoters",FieldValue.arrayUnion(currentUser));
 
                 }
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
             }
         });
@@ -124,7 +163,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     public class HomeViewHolder extends RecyclerView.ViewHolder {
         public TextView username,city,question,answer,upvotes;
         public Button upvoteBtn;
+<<<<<<< HEAD
         public ImageView relatedImage;
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
         public HomeViewHolder(@NonNull View itemView) {
             super(itemView);
             username = itemView.findViewById(R.id.name);//taking name
@@ -133,7 +175,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             answer = itemView.findViewById(R.id.answer);//taking answer
             upvotes = itemView.findViewById(R.id.votes);//taking votes
             upvoteBtn = itemView.findViewById(R.id.upVote_btn); //upvote btn
+<<<<<<< HEAD
             relatedImage = itemView.findViewById(R.id.required_img);
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
         }
     }
 

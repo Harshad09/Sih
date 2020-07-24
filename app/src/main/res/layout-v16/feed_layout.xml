@@ -31,7 +31,11 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/todo"
             android:scaleType="fitCenter"
+<<<<<<< HEAD
             android:src="@drawable/account"
+=======
+            android:src="@mipmap/ic_launcher"
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
             />
 
         <LinearLayout
@@ -67,11 +71,26 @@
 
     </RelativeLayout>
 
+<<<<<<< HEAD
 
 
             <LinearLayout
                 android:id="@+id/que_and_ans"
                 android:layout_width="375dp"
+=======
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/border"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/que_and_ans"
+                android:layout_width="wrap_content"
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
                 android:layout_height="wrap_content"
                 android:layout_below="@id/relative_1"
                 android:layout_margin="8dp"
@@ -96,30 +115,52 @@
 
                 <ImageView
                     android:id="@+id/required_img"
+<<<<<<< HEAD
                     android:layout_width="match_parent"
+=======
+                    android:layout_width="wrap_content"
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
                     android:layout_height="198dp"
                     android:layout_marginTop="8dp"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/todo"
                     android:scaleType="fitCenter"
+<<<<<<< HEAD
                     android:visibility="visible"/>
 
             </LinearLayout>
 
+=======
+                    android:src="@drawable/img2"
+                    android:visibility="visible"/>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/que_and_ans"
         android:layout_marginTop="4dp">
 
+<<<<<<< HEAD
         <Button
             android:id="@+id/upVote_btn"
+=======
+        <ToggleButton
+            android:id="@+id/upVote_btn"
+            style="@style/Widget.AppCompat.Button.Small"
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:background="@drawable/ic_upvote"
             android:checked="false"
             >
+<<<<<<< HEAD
         </Button>
+=======
+        </ToggleButton>
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
         <TextView
             android:id="@+id/votes"
             android:layout_width="wrap_content"

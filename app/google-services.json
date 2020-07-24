@@ -42,6 +42,7 @@
           ]
         }
       }
+<<<<<<< HEAD
     },
     {
       "client_info": {
@@ -79,6 +80,8 @@
           ]
         }
       }
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
     }
   ],
   "configuration_version": "1"

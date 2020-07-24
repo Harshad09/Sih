@@ -10,7 +10,10 @@
     <color name="dark_grey">#696969</color>
     <color name="white">#FFFFFF</color>
     <color name="yellow">#FFF222</color>
+<<<<<<< HEAD
     <color name="unlike">#A9AFA9</color>
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
     <color name="main">#2B2B52</color>
 <!--    <color name="colorPrimaryDark">#00574B</color>-->

@@ -1,7 +1,10 @@
 package com.example.discussit;
 
 import androidx.annotation.NonNull;
+<<<<<<< HEAD
 import androidx.annotation.Nullable;
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
+<<<<<<< HEAD
 import android.content.SharedPreferences;
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,10 +29,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+<<<<<<< HEAD
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+=======
+import com.google.firebase.firestore.FirebaseFirestore;
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -43,19 +53,26 @@ import java.util.List;
 
 import adapter.HomeAdapter;
 import model.HomeModel;
+<<<<<<< HEAD
 import model.HomeModelAnswer;
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 import model.QuestionFeed;
 
 public class MainActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
     public static String currentUser = "8ZXeHfadswSGHqIcPkZZ";
 
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
     private Toolbar toolbar;
     private RecyclerView feedRecyclerView;
     private RecyclerView.Adapter mDataAdapter;
     private ProgressBar progressBar;
 
 
+<<<<<<< HEAD
       public String name,questionid;
       public HomeModel homeModel = new HomeModel();
       public List<HomeModel> entity = new ArrayList<>();
@@ -63,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
       public List<HomeModelAnswer> topVoteAns = new ArrayList<>();
       public List<String> answerId = new ArrayList<>();
       public List<String > userid = new ArrayList<>();
+=======
+      public String name;
+      public HomeModel homeModel = new HomeModel();
+      public List<HomeModel> entity = new ArrayList<>();
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
     //List to store all question that match perticular requirements
     List<QuestionFeed> questionList ;
@@ -89,7 +111,11 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Home");
+<<<<<<< HEAD
         toolbar.setLogo(R.drawable.account);
+=======
+        toolbar.setLogo(R.drawable.ic_launcher_user_foreground);
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
         feedRecyclerView = findViewById(R.id.recyclerview);
 
@@ -101,7 +127,11 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         feedRecyclerView.setLayoutManager(layoutManager);
+<<<<<<< HEAD
         mDataAdapter = new HomeAdapter(this,entity,topVoteAns,answerId,userid);
+=======
+        mDataAdapter = new HomeAdapter(this,entity);
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
         feedRecyclerView.setAdapter(mDataAdapter);
 
         progressBar =  findViewById(R.id.progressBarMain);
@@ -114,13 +144,18 @@ public class MainActivity extends AppCompatActivity {
 
                 //Fetching all documents(question) where question tag == explore tag
                 db.collectionGroup("question")
+<<<<<<< HEAD
                         .whereArrayContainsAny("tags",Arrays.asList(tags.get(0), tags.get(1), tags.get(2)))
+=======
+                        .whereArrayContainsAny("Tags",Arrays.asList(tags.get(0), tags.get(1), tags.get(2)))
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
                         .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             progressBar.setVisibility(View.INVISIBLE);
                             for (QueryDocumentSnapshot document : task.getResult()) {
+<<<<<<< HEAD
                                 if(document.getBoolean("isanswered")==true){
 
 
@@ -135,6 +170,14 @@ public class MainActivity extends AppCompatActivity {
                                     SharedPreferences.Editor editor=preferences.edit();
                                     editor.putString("questionid",questionid);
                                     editor.commit();
+=======
+                                if(document.getBoolean("IsAnswered")==true){
+
+
+                                    homeModel = document.toObject(HomeModel.class);
+                                    entity.add(homeModel);
+
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
 
 
@@ -169,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
         SharedPreferences preferences=getSharedPreferences("home",MODE_PRIVATE);
         String n = preferences.getString("questionid","defaultValue");
         db.collectionGroup("answer").whereEqualTo("questionid",n).orderBy("upvotes", Query.Direction.DESCENDING).limit(1)
@@ -218,6 +262,8 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
         //Cloud function code
 
@@ -357,7 +403,11 @@ public class MainActivity extends AppCompatActivity {
     public void readTags(final MyCallback myCallback){
 
         //***HomeAdapter List data fecthing***//
+<<<<<<< HEAD
         DocumentReference user = db.collection("Users").document(currentUser);
+=======
+        DocumentReference user = db.collection("Users").document("user3");
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
         user.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {

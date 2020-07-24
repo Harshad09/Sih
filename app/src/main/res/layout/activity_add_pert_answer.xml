@@ -64,6 +64,7 @@
                 android:hint="Write your answer "
                 android:importantForAutofill="no"
                 android:textColorLink="#00090808"></EditText>
+<<<<<<< HEAD
             <Button
                 android:layout_width="53dp"
                 android:layout_height="47dp"
@@ -75,6 +76,8 @@
                 android:layout_height="250dp"
                 android:visibility="gone"
                 android:id="@+id/relatedImage"></ImageView>
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
         </LinearLayout>
 

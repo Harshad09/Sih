@@ -7,7 +7,11 @@ android {
     buildToolsVersion "29.0.0"
     defaultConfig {
         applicationId "com.example.discussit"
+<<<<<<< HEAD
         minSdkVersion 22
+=======
+        minSdkVersion 15
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -15,9 +19,12 @@ android {
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
     }
+<<<<<<< HEAD
     aaptOptions {
         noCompress "tflite"
     }
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
     buildTypes {
         release {
             minifyEnabled false
@@ -39,9 +46,18 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.google.android.material:material:1.2.0-alpha02'
+<<<<<<< HEAD
 
     implementation 'com.android.support:multidex:1.0.3'
 
+=======
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
@@ -52,6 +68,7 @@ dependencies {
     implementation "com.google.android.material:material:1.0.0-rc01"
 //    implementation 'com.google.firebase:firebase-auth:19.3.2'
     implementation 'com.synnapps:carouselview:0.1.4'
+<<<<<<< HEAD
 //    implementation 'com.google.firebase:firebase-core:15.0.1'
 
     implementation 'com.google.firebase:firebase-messaging:20.1.5'
@@ -67,5 +84,7 @@ dependencies {
     implementation 'com.camerakit:jpegkit:0.1.0'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
 }

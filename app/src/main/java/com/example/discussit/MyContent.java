@@ -54,7 +54,11 @@ public class MyContent extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("My Content");
+<<<<<<< HEAD
         toolbar.setLogo(R.drawable.account);
+=======
+        toolbar.setLogo(R.drawable.ic_launcher_user_foreground);
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
 
 //        //Fetching all the answer of the user itself

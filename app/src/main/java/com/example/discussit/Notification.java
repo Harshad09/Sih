@@ -23,7 +23,11 @@ public class Notification extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Notification");
+<<<<<<< HEAD
         toolbar.setLogo(R.drawable.account);
+=======
+        toolbar.setLogo(R.drawable.ic_launcher_user_foreground);
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
         //Initialized and assign variable
 

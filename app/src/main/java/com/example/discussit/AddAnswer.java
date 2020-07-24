@@ -35,7 +35,10 @@ import java.util.List;
 import adapter.AddAnswerAdapter;
 import model.AddAnswerModel;
 import model.AddAnswerName;
+<<<<<<< HEAD
 import model.QuestionIdModel;
+=======
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
 public class AddAnswer extends AppCompatActivity {
 
@@ -47,12 +50,18 @@ public class AddAnswer extends AppCompatActivity {
     private RecyclerView.Adapter mDataAdapter;
     private AddAnswerModel addAnswerModel = new AddAnswerModel();
 //    private AddAnswerName addAnswerName = new AddAnswerName();
+<<<<<<< HEAD
     private QuestionIdModel questionIdModel = new QuestionIdModel();
 
     private List<String> knowledge;
     private List<AddAnswerModel> allQus = new ArrayList<>();
     private List<String> questionId = new ArrayList<>();
     private List<String> userId = new ArrayList<>();
+=======
+
+    private List<String> knowledge;
+    private List<AddAnswerModel> allQus = new ArrayList<>();
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 //    private List<AddAnswerName> allName = new ArrayList<>();
 
     //firebase obj
@@ -70,7 +79,11 @@ public class AddAnswer extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add Answer");
+<<<<<<< HEAD
         toolbar.setLogo(R.drawable.account);
+=======
+        toolbar.setLogo(R.drawable.ic_launcher_user_foreground);
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
 
         setSupportActionBar(toolbar2);
         getSupportActionBar().setTitle("QUESTIONS FOR YOU");
@@ -84,7 +97,11 @@ public class AddAnswer extends AppCompatActivity {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         que_recycler_view.setLayoutManager(layoutManager);
+<<<<<<< HEAD
         mDataAdapter = new AddAnswerAdapter(this,allQus,questionId,userId);
+=======
+        mDataAdapter = new AddAnswerAdapter(this,allQus);
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
         que_recycler_view.setAdapter(mDataAdapter);
 
 
@@ -107,6 +124,7 @@ public class AddAnswer extends AppCompatActivity {
                                     return;
                                 }
                                 allQus.clear();
+<<<<<<< HEAD
                                 questionId.clear();
                                 for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
 //                                    List<String> eligible = (List<String>) doc.get("eligibleUsers");
@@ -122,6 +140,15 @@ public class AddAnswer extends AppCompatActivity {
 
                                         String user = doc.getReference().getParent().getParent().getId();
                                         userId.add(user);
+=======
+                                for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                                    List<String> eligible = (List<String>) doc.get("eligibleUsers");
+                                    if (eligible.contains("user3")) {
+                                        progressBar.setVisibility(View.INVISIBLE);
+                                        addAnswerModel = doc.toObject(AddAnswerModel.class);
+                                        allQus.add(addAnswerModel);
+                                    }
+>>>>>>> 759e75e13f57db66b39d99aca529f8cdc433b9c0
                                 }
                                 mDataAdapter.notifyDataSetChanged();
 
